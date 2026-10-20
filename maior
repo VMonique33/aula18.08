@@ -1,0 +1,8 @@
+def maior_interativo(lista):
+ print (lista)
+ maior = lista[0]
+ for numero  in lista:
+     if numero > maior:
+         maior = numero
+ return maior
+print(maior_interativo([3, 9, 27]))
