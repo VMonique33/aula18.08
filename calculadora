@@ -1,0 +1,49 @@
+import tkinter as tk
+
+def dividir():
+    try:
+        # Captura os valores dos campos
+        dividendo = entrada_dividendo.get()
+        divisor = entrada_divisor.get()
+
+        # Conversão para número
+        dividendo = float(dividendo)
+        divisor = float(divisor)
+
+        # Realiza a divisão
+        resultado = dividendo / divisor
+        label_resultado.config(text=f"Resultado: {resultado}", fg="green")
+
+    except ValueError:
+        # Erro de conversão (letras ou campo vazio)
+        label_resultado.config(text="Erro: insira apenas números.", fg="red")
+    except ZeroDivisionError:
+        # Erro de divisão por zero
+        label_resultado.config(text="Erro: divisão por zero não permitida.", fg="red")
+    except Exception as e:
+        # Qualquer outro erro inesperado
+        label_resultado.config(text=f"Erro inesperado: {e}", fg="red")
+
+# Criação da janela principal
+janela = tk.Tk()
+janela.title("Calculadora de Divisão")
+
+# Campos de entrada
+tk.Label(janela, text="Dividendo:").pack()
+entrada_dividendo = tk.Entry(janela)
+entrada_dividendo.pack()
+
+tk.Label(janela, text="Divisor:").pack()
+entrada_divisor = tk.Entry(janela)
+entrada_divisor.pack()
+
+# Botão de divisão
+botao_dividir = tk.Button(janela, text="Dividir", command=dividir)
+botao_dividir.pack()
+
+# Label para mostrar resultado ou erros
+label_resultado = tk.Label(janela, text="")
+label_resultado.pack()
+
+# Loop principal
+janela.mainloop()
