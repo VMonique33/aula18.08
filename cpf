@@ -1,0 +1,47 @@
+import re
+
+def maior_iterativo(lista):
+    maior = lista[0]
+    for num in lista:
+        if num > maior:
+            maior = num
+    return maior
+
+def maior_recursivo(lista):
+    if len(lista) == 1:
+        return lista[0]
+    else:
+        maior_restante = maior_recursivo(lista[1:])
+        return lista[0] if lista[0] > maior_restante else maior_restante
+
+def valida_cpf(cpf: str) -> bool:
+    # Remove caracteres não numéricos
+    cpf = re.sub(r'[^0-9]', '', cpf)
+
+    # Verifica se tem 11 dígitos
+    if len(cpf) != 11:
+        return False
+
+    # Rejeita CPFs com todos os dígitos iguais
+    if cpf == cpf[0] * 11:
+        return False
+
+    # Calcula dígitos verificadores
+    for i in range(9, 11):
+        soma = sum(int(cpf[num]) * ((i + 1) - num) for num in range(i))
+        digito = (soma * 10) % 11
+        if digito == 10:
+            digito = 0
+        if digito != int(cpf[i]):
+            return False
+
+    return True
+
+if __name__ == "__main__":
+    # Testes rápidos
+    lista_teste = [3, 9, 2, 7]
+    print("Maior (iterativo):", maior_iterativo(lista_teste))
+    print("Maior (recursivo):", maior_recursivo(lista_teste))
+
+    print("CPF válido?", valida_cpf("529.982.247-25"))  # Exemplo válido
+    print("CPF válido?", valida_cpf("111.111.111-11"))  # Inválido
