@@ -1,0 +1,66 @@
+# --- 1. DEFINIÇÃO DAS CLASSES ---
+# Todas estas classes devem estar no início do ficheiro,
+# alinhadas totalmente à esquerda (coluna 0).
+
+class Gerente:
+    def __init__(self, nome, salario_base, bonus):
+        self.nome = nome
+        self.salario_base = salario_base
+        self.bonus = bonus
+
+
+class Vendedor:
+    def __init__(self, nome, salario_base, comissao):
+        self.nome = nome
+        self.salario_base = salario_base
+        self.comissao = comissao
+
+
+class VendedorSenior:
+    def __init__(self, nome, salario_base, comissao):
+        self.nome = nome
+        self.salario_base = salario_base
+        self.comissao = comissao
+
+
+class Estagiario:
+    def __init__(self, nome, salario_base):
+        self.nome = nome
+        self.salario_base = salario_base
+
+class Gerente:
+    def __init__(self, nome, salario_base, bonus):
+        self.nome = nome
+        self.salario_base = salario_base
+        self.bonus = bonus
+
+class Vendedor:
+    def __init__(self, nome, salario_base, comissao):
+        self.nome = nome
+        self.salario_base = salario_base
+        self.comissao = comissao
+
+class VendedorSenior:
+    def __init__(self, nome, salario_base, comissao):
+        self.nome = nome
+        self.salario_base = salario_base
+        self.comissao = comissao
+
+class Estagiario:
+    def __init__(self, nome, salario_base):
+        self.nome = nome
+        self.salario_base = salario_base# --- 2. EXECUÇÃO COM OS DADOS DE TESTE ---
+
+if __name__ == "__main__":
+    # Instanciando a equipa de teste
+    equipe = [
+        Gerente("Ana", 8000.0, 2000.0),
+        Vendedor("Bruno", 3000.0, 4000.0),
+        VendedorSenior("Carla", 3500.0, 40000.0),
+        Estagiario("Davi", 1500.0)
+    ]
+
+    # Exemplo do resto do seu código (para listar ou processar a equipa)
+    print("--- Folha de Pagamento ---")
+    for funcionario in equipe:
+        print(f"Funcionário: {funcionario.nome}")
